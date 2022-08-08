@@ -1,7 +1,7 @@
 [
-	// "Channels.json",
 	"Extra.json",
-	"Payment.json",
-	"EventWeeklyChallenge.json",
-	"EventHomeComing.json"
+	"Card.json",
+	"ListCard.json",
+	"Tower.json",
+	"Potion.json"
 ]

@@ -106,3 +106,8 @@ maxViewedPacks = 5
 NOT_ENOUGH_MONEY = "Not enough the min buy in,"
 ENOUGH_MOVE_TO_GO_HOME = "Going Home now"
 NOT_ENOUGH_MOVE_TO_GO_HOME = "You need at least"
+
+
+# =======================Navbar===============================
+
+NAV_BAR_BTN_CARD = "nav_bar_item_card"

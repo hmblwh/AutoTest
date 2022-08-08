@@ -1,0 +1,8 @@
+{
+    "python.analysis.extraPaths": [
+        "./Content.air",
+        "./Main.air",
+        "./Constant.air",
+        "./Features.air"
+    ]
+}

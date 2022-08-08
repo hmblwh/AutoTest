@@ -10,6 +10,7 @@ using("Constant.air")
 from Constant import *
 using("Features.air")
 from Features import *
+from Card import *
 # from Login import *
 # from Shop import *
 from DropTower import *
