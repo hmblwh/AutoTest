@@ -1,0 +1,40 @@
+{
+    "VIPLevel": [
+        {
+            "requiredPoint": 0,
+            "buyGoldBonusRate": 0,
+            "duration": -1,
+            "hasSymbol": 0,
+            "directlyGoldBonus": 0,
+            "supportGoldBonus": 2000000,
+            "fee": 0.05
+        },
+        {
+            "requiredPoint": 2000,
+            "buyGoldBonusRate": 0.2,
+            "duration": 604800,
+            "hasSymbol": 1,
+            "directlyGoldBonus": 400000000,
+            "supportGoldBonus": 40000000,
+            "fee": 0.05
+        },
+        {
+            "requiredPoint": 4000,
+            "buyGoldBonusRate": 0.3,
+            "duration": 2592000,
+            "hasSymbol": 1,
+            "directlyGoldBonus": 1000000000,
+            "supportGoldBonus": 100000000,
+            "fee": 0.05
+        },
+        {
+            "requiredPoint": 10000,
+            "buyGoldBonusRate": 0.5,
+            "duration": 5184000,
+            "hasSymbol": 1,
+            "directlyGoldBonus": 5000000000,
+            "supportGoldBonus": 500000000,
+            "fee": 0.05
+        }
+    ]
+}

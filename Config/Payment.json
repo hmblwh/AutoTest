@@ -1,0 +1,273 @@
+{
+    "General": {
+        "usdExchangeRate": 22275,
+        "iosNetRevRate": 0.7,
+        "androidNetRevRate": 0.7
+    },
+    "IAP": {
+        "susun_1a": {
+            "gold": 320000000,
+            "xu": 160,
+            "bonus1StPay": 1,
+            "vPoint": 160,
+            "cost": {
+                "ind": 10000,
+                "inter": 1
+            },
+            "pkgKey": "1a",
+            "productId": "zps.pack1",
+            "isAvailable": 1
+        },
+        "susun_2a": {
+            "gold": 640000000,
+            "xu": 320,
+            "bonus1StPay": 1,
+            "vPoint": 320,
+            "cost": {
+                "ind": 20000,
+                "inter": 2
+            },
+            "pkgKey": "2a",
+            "productId": "zps.pack3",
+            "isAvailable": 1
+        },
+        "susun_3a": {
+            "gold": 960000000,
+            "xu": 480,
+            "bonus1StPay": 1,
+            "vPoint": 480,
+            "cost": {
+                "ind": 30000,
+                "inter": 3
+            },
+            "pkgKey": "3a",
+            "productId": "none",
+            "isAvailable": 1
+        },
+        "susun_5a": {
+            "gold": 1600000000,
+            "xu": 800,
+            "bonus1StPay": 1.2,
+            "vPoint": 800,
+            "cost": {
+                "ind": 50000,
+                "inter": 5
+            },
+            "pkgKey": "5a",
+            "productId": "zps.pack5",
+            "isAvailable": 1
+        },
+        "susun_10a": {
+            "gold": 3200000000,
+            "xu": 1600,
+            "bonus1StPay": 1.4,
+            "vPoint": 1600,
+            "cost": {
+                "ind": 100000,
+                "inter": 10
+            },
+            "pkgKey": "10a",
+            "productId": "zps.pack7",
+            "isAvailable": 1
+        },
+        "susun_50a": {
+            "gold": 16000000000,
+            "xu": 8000,
+            "bonus1StPay": 1.6,
+            "vPoint": 8000,
+            "cost": {
+                "ind": 500000,
+                "inter": 50
+            },
+            "pkgKey": "50a",
+            "productId": "zps.pack11",
+            "isAvailable": 1
+        }
+    },
+    "SMS": {
+        "SMS_ID_1": {
+            "cost": 1000,
+            "gold": 32000000,
+            "vPoint": 16,
+            "bonus1StPay": 0.5,
+            "isAvailable": 0
+        },
+        "SMS_ID_2": {
+            "cost": 2000,
+            "gold": 64000000,
+            "vPoint": 32,
+            "bonus1StPay": 0.5,
+            "isAvailable": 0
+        },
+        "SMS_ID_3": {
+            "cost": 3000,
+            "gold": 96000000,
+            "vPoint": 48,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        },
+        "SMS_ID_4": {
+            "cost": 5000,
+            "gold": 160000000,
+            "vPoint": 80,
+            "bonus1StPay": 1,
+            "isAvailable": 1
+        },
+        "SMS_ID_5": {
+            "cost": 10000,
+            "gold": 320000000,
+            "vPoint": 160,
+            "bonus1StPay": 1,
+            "isAvailable": 1
+        },
+        "SMS_ID_6": {
+            "cost": 20000,
+            "gold": 640000000,
+            "vPoint": 320,
+            "bonus1StPay": 1,
+            "isAvailable": 1
+        },
+        "SMS_ID_7": {
+            "cost": 30000,
+            "gold": 960000000,
+            "vPoint": 480,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        },
+        "SMS_ID_8": {
+            "cost": 50000,
+            "gold": 1600000000,
+            "vPoint": 800,
+            "bonus1StPay": 1,
+            "isAvailable": 1
+        },
+        "SMS_ID_9": {
+            "cost": 60000,
+            "gold": 1920000000,
+            "vPoint": 960,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        },
+        "SMS_ID_10": {
+            "cost": 75000,
+            "gold": 2400000000,
+            "vPoint": 1200,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        },
+        "SMS_ID_11": {
+            "cost": 100000,
+            "gold": 3200000000,
+            "vPoint": 1600,
+            "bonus1StPay": 1,
+            "isAvailable": 1
+        },
+        "SMS_ID_12": {
+            "cost": 250000,
+            "gold": 8000000000,
+            "vPoint": 4000,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        },
+        "SMS_ID_13": {
+            "cost": 500000,
+            "gold": 16000000000,
+            "vPoint": 8000,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        }
+    },
+    "Wallet": {
+        "WL_ID_1": {
+            "cost": 1000,
+            "gold": 32000000,
+            "vPoint": 16,
+            "bonus1StPay": 0.5,
+            "isAvailable": 0
+        },
+        "WL_ID_2": {
+            "cost": 2000,
+            "gold": 64000000,
+            "vPoint": 32,
+            "bonus1StPay": 0.5,
+            "isAvailable": 0
+        },
+        "WL_ID_3": {
+            "cost": 3000,
+            "gold": 96000000,
+            "vPoint": 48,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        },
+        "WL_ID_4": {
+            "cost": 5000,
+            "gold": 160000000,
+            "vPoint": 80,
+            "bonus1StPay": 1,
+            "isAvailable": 1
+        },
+        "WL_ID_5": {
+            "cost": 10000,
+            "gold": 320000000,
+            "vPoint": 160,
+            "bonus1StPay": 1,
+            "isAvailable": 1
+        },
+        "WL_ID_6": {
+            "cost": 20000,
+            "gold": 640000000,
+            "vPoint": 320,
+            "bonus1StPay": 1,
+            "isAvailable": 1
+        },
+        "WL_ID_7": {
+            "cost": 30000,
+            "gold": 960000000,
+            "vPoint": 480,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        },
+        "WL_ID_8": {
+            "cost": 50000,
+            "gold": 1600000000,
+            "vPoint": 800,
+            "bonus1StPay": 1,
+            "isAvailable": 1
+        },
+        "WL_ID_9": {
+            "cost": 60000,
+            "gold": 1920000000,
+            "vPoint": 960,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        },
+        "WL_ID_10": {
+            "cost": 75000,
+            "gold": 2400000000,
+            "vPoint": 1200,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        },
+        "WL_ID_11": {
+            "cost": 100000,
+            "gold": 3200000000,
+            "vPoint": 1600,
+            "bonus1StPay": 1,
+            "isAvailable": 1
+        },
+        "WL_ID_12": {
+            "cost": 250000,
+            "gold": 8000000000,
+            "vPoint": 4000,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        },
+        "WL_ID_13": {
+            "cost": 500000,
+            "gold": 16000000000,
+            "vPoint": 8000,
+            "bonus1StPay": 1,
+            "isAvailable": 0
+        }
+    }
+}
