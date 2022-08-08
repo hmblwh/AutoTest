@@ -10,7 +10,7 @@ using("Constant.air")
 from Constant import *
 using("Features.air")
 from Features import *
-# from Login import *
+from Login import *
 # from Shop import *
 from DropTower import *
 using("Content.air")
