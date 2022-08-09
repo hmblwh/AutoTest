@@ -30,4 +30,4 @@ def Test(caseId):
 
 	poco.wait_for_all([playerLayer, opponentLayer])
 	sleep(5)
-	poco('towerCard')[1].drag_to(poco("player_layer").child('mapNode_3_1'))
+    
