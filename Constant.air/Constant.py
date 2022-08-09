@@ -107,7 +107,18 @@ NOT_ENOUGH_MONEY = "Not enough the min buy in,"
 ENOUGH_MOVE_TO_GO_HOME = "Going Home now"
 NOT_ENOUGH_MOVE_TO_GO_HOME = "You need at least"
 
+# =================Header ==================
+HEADER_BTN_CHEAT = "header_btn_cheat"
+CHEAT_POPUP_CARD_ID_INPUT = 'card_id_input'
+CHEAT_POPUP_CARD_LEVEL_INPUT = 'card_level_input'
+CHEAT_POPUP_CARD_FRAGMENTS_INPUT = "card_fragments_input"
+CHEAT_POPUP_BTN_SENT = "cheat_popup_btn_send"
 
 # =======================Navbar===============================
 
 NAV_BAR_BTN_CARD = "nav_bar_item_card"
+
+
+# ==================Card detail popup=========================
+
+CARD_DETAIL_BTN_CLOSE = "close_button"
