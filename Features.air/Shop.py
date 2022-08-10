@@ -91,9 +91,9 @@ def cheatGoldAndGem(caseId, gold, gem):
 def checkBuyGoldGUI(caseId, position, valueTitle, valueGem):
     if position < 0 or position > 2: 
         return            
-    gameTitleValue = poco("buy_gold_" + str(position))[0].child("Node").child("title").get_text()
+    gameTitleValue = poco("buy_gold_" + str(position)).child("Node").child("title").get_text()
     gameTitleValue = int(gameTitleValue.replace('.', ''))
-    value = poco("buy_gold_" + str(position) + "_btn")[0].child("Node").child("value").get_text()
+    value = poco("buy_gold_" + str(position) + "_btn").child("Node").child("value").get_text()
     # kiểm tra xem số lượng vàng và giá gem của shop đã đúng với config truyền vào chưa
     if int(value) != valueGem or int(gameTitleValue) != valueTitle:
         WriteLogRunning(caseId, "Shop Config failed - ", "", False, False)
@@ -163,7 +163,7 @@ def checkCardPrice(caseId, position, goldMultiplier):
     if position < 1 or position > 2: 
         return         
     # Lấy số lượng card của item
-    cardNumber = poco("buy_item_" + str(position))[0].child(CARD_NUMBER)[0].offspring("num").get_text()
+    cardNumber = poco("buy_item_" + str(position)).child(CARD_NUMBER).offspring("num").get_text()
     cardNumber = int(cardNumber.replace('x', ''))
     # lấy giá của item
     cardBtnPrice = getShopItemPrice(position)
@@ -191,8 +191,8 @@ def checkBuyCard(caseId, position):
     cardBtnPrice = getShopItemPrice(position)
     if cardBtnPrice == -1:
         WriteLogRunning(caseId, "check Buy Card failed - card has been bought", "", False, False)
-    cardId = getCardId(poco("buy_item_" + str(position))[0].child(CARD_NUMBER))
-    shopCardNumber = poco("buy_item_" + str(position))[0].child(CARD_NUMBER)[0].offspring("num").get_text()
+    cardId = getCardId(poco("buy_item_" + str(position)).child(CARD_NUMBER))
+    shopCardNumber = poco("buy_item_" + str(position)).child(CARD_NUMBER).offspring("num").get_text()
     shopCardNumber = int(shopCardNumber.replace('x', ''))
     
     # Card id không có
@@ -250,8 +250,8 @@ def checkBuyTextColor(caseId, canBuyColor, cannotBuyColor):
     for i in range(0, 3):
         buyGoldBtnValue = getShopGoldPrice(i)
         buyItemBtnValue = getShopItemPrice(i)
-        buyGoldNode = poco("buy_gold_" + str(i))[0].child("Node")
-        buyItemNode = poco("buy_item_" + str(i))[0].child("Node")
+        buyGoldNode = poco("buy_gold_" + str(i)).child("Node")
+        buyItemNode = poco("buy_item_" + str(i)).child("Node")
           
         if gem < buyGoldBtnValue:
             # trường hợp màu của text phải là cannotBuyColor
@@ -304,7 +304,7 @@ def checkBuyGold(caseId):
         # lấy giá tiền của item vàng
         buyGoldPrice = getShopGoldPrice(i)
         # lấy phần thưởng của item vàng
-        buyGoldValue = poco("buy_gold_" + str(i))[0].child("Node").child("title").get_text()
+        buyGoldValue = poco("buy_gold_" + str(i)).child("Node").child("title").get_text()
         buyGoldValue = int(buyGoldValue.replace('.', ''))
         goldOldValue = getResourceGold()
         gemOldValue = getResourceGem()
@@ -340,11 +340,11 @@ def moveToShopScreen():
 
 # lấy giá của gói mua vàng
 def getShopGoldPrice(position):
-    return int(poco("buy_gold_" + str(position) + "_btn")[0].child("Node").child("value").get_text())
+    return int(poco("buy_gold_" + str(position) + "_btn").child("Node").child("value").get_text())
               
 # lấy giá của gói mua item
 def getShopItemPrice(position):
-    text = poco("buy_item_" + str(position) + "_btn")[0].child("Node").child("value").get_text()
+    text = poco("buy_item_" + str(position) + "_btn").child("Node").child("value").get_text()
     try:
         value = int(text)
         return value
@@ -353,25 +353,25 @@ def getShopItemPrice(position):
     return -1
 # lấy tài nguyên vàng của người chơi
 def getResourceGold():
-    return int(poco(RESOURCE_GOLD)[0].offspring("value").get_text().replace('.', ''))
+    return int(poco(RESOURCE_GOLD).offspring("value").get_text().replace('.', ''))
 
 # lấy tài nguyên gem của người chơi
 def getResourceGem():
-    return int(poco(RESOURCE_GEM)[0].offspring("value").get_text().replace('.', ''))
+    return int(poco(RESOURCE_GEM).offspring("value").get_text().replace('.', ''))
     
 # lấy id của thẻ item trong shop
 # cardNumber: CardUIWithNumber trong code
 def getCardId(cardNumber):
     cardIds = [int(id) for id in config_list_card.keys()]
     for cardId in cardIds:
-        if cardNumber[0].child(CARD_ID + str(cardId)).exists():
+        if cardNumber.child(CARD_ID + str(cardId)).exists():
             return cardId
     return -1
 
 # lấy số lượng thẻ có trong gói mua item
 # cardNumber: CardUIWithNumber trong code
 def getNumberOfCardUI(cardNumber):
-   text = cardNumber[0].offspring("num").get_text()
+   text = cardNumber.offspring("num").get_text()
    num = int(text.replace('x', ''))
     
    return num
@@ -391,7 +391,7 @@ def getInventoryCardName(cardId):
 def getNumberOfCard(cardName):
     if not poco(cardName).exists:
         return -1
-    numberText = poco(cardName)[0].child("card_progress_bar").offspring("text").get_text()
+    numberText = poco(cardName).child("card_progress_bar").offspring("text").get_text()
     print("numberText: " + numberText)
     currentNumber = numberText.split("/")[0]
     return int(currentNumber)
