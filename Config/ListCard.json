@@ -1,0 +1,64 @@
+{
+    "listCard": {
+      "0": {
+        "type": "tower" ,
+        "id": 0
+      } ,
+      "1": {
+        "type": "tower" ,
+        "id": 1
+      } ,
+      "2": {
+        "type": "tower" ,
+        "id": 2
+      } ,
+      "3": {
+        "type": "tower" ,
+        "id": 3
+      } ,
+      "4": {
+        "type": "tower" ,
+        "id": 4
+      } ,
+      "5": {
+        "type": "tower" ,
+        "id": 5
+      } ,
+      "6": {
+        "type": "tower" ,
+        "id": 6
+      } ,
+      "7": {
+        "type": "spell" ,
+        "id": 0
+      } ,
+      "8": {
+        "type": "spell" ,
+        "id": 1
+      } ,
+      "9": {
+        "type": "spell" ,
+        "id": 2
+      } ,
+      "10": {
+        "type": "monster" ,
+        "id": 0
+      } ,
+      "11": {
+        "type": "monster" ,
+        "id": 1
+      } ,
+      "12": {
+        "type": "monster" ,
+        "id": 2
+      } ,
+      "13": {
+        "type": "monster" ,
+        "id": 3
+      } ,
+      "14": {
+        "type": "monster" ,
+        "id": 4
+      }
+    }
+}
