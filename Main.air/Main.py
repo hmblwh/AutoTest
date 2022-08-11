@@ -12,8 +12,9 @@ using("Features.air")
 from Features import *
 from Card import *
 # from Login import *
-# from Shop import *
-from DropTower import *
+from Login import *
+from Shop import *
+from Battle import *
 using("Content.air")
 from Content import *
 using("Main.air")

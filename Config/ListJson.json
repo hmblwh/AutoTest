@@ -1,9 +1,8 @@
 [
-	"Extra.json",
 	"Card.json",
-	"ListCard.json",
 	"Tower.json",
 	"Potion.json",
 	"TargetBuff.json",
-	"TowerBuff.json"
+	"TowerBuff.json",
+	"ListCard.json"
 ]
