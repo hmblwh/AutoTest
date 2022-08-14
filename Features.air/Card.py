@@ -1,6 +1,7 @@
 # -*- encoding=utf8 -*-
 from collections import namedtuple
 import re
+from unittest import case
 from airtest.core.api import *
 from airtest.core.api import using
 using("Content.air")
@@ -213,6 +214,7 @@ def check_config_spell (case_id,card_model: CardModel,level):
             damage = card_model.config_type["adjust"]["player"]["value"]
         elif card_model.config["id"] in {1,2}:
             damage = card_model.config_type["damage"]
+        damage *= 1.1**(level-1)
         radius = card_model.config_type["radius"]
         check_damage(damage)
         check_radius(radius)
@@ -248,27 +250,29 @@ def get_list_nomal_card ():
 
 
 def check_card_config(case_id):
-    poco(NAV_BAR_BTN_CARD).click()
 
+    
+    poco(NAV_BAR_BTN_CARD).click()
     list_battle_card = get_list_battle_card()
 
 
-    # check num battle card
+    # kiểm tra số thẻ battle card
     if list_battle_card.__len__() != 8:
         WriteLogRunning(case_id, f"Num battle card diff 8 ({len(list_battle_card)})", "", False, False)
         return
 
-    # check energy battle card on 
+    # kiểm tra config năng lượng của tất cả các thẻ battle
     for item in list_battle_card:
         check_energy_card(case_id,*item)
     
     list_normal_card = get_list_nomal_card()
     
-
+    # kiểm tra config năng lượng của tất cả các thẻ thường
     for item in list_normal_card:
         check_energy_card(case_id,*item)
     
-    for _level in {1,11}:
+    # cheat level các thẻ và dọc tất cả chỉ số
+    for _level in range(1,11):
         for item in list_battle_card:
             cheat_card_item(item[0].id,_level)
             sleep(1.0)
@@ -285,6 +289,7 @@ def change_card(case_id,card_id_in,card_id_out):
     list_normal_card = get_list_nomal_card()
     list_battle_card = get_list_battle_card()
 
+    # kiểm tra id thẻ in có nằm trong thẻ thường không
     for item in list_normal_card:
         if item[0].id == card_id_in:
             item_in = item
@@ -293,6 +298,7 @@ def change_card(case_id,card_id_in,card_id_out):
         WriteLogRunning(case_id, f"Not exist card id {card_id_in} in normal card list ", "", False, False)
         return
 
+    # kiểm tra id thẻ ra có nằm trong thẻ battle không
     for item in list_battle_card:
         if item[0].id == card_id_out:
             item_out = item
@@ -300,6 +306,7 @@ def change_card(case_id,card_id_in,card_id_out):
     else:
         WriteLogRunning(case_id, f"Not exist card id {card_id_out} in battle card list ", "", False, False)
         return
+
 
     item_in[1].click()
     poco("card_info_popup_btn_choose").click()
@@ -309,7 +316,7 @@ def change_card(case_id,card_id_in,card_id_out):
     list_normal_card = get_list_nomal_card()
     list_battle_card = get_list_battle_card()
 
-
+    # kiểm tra lại sau khi swap có đúng ko
     for item in list_normal_card:
         if item[0].id == card_id_out:
             item_in = item
@@ -330,8 +337,165 @@ def change_card(case_id,card_id_in,card_id_out):
 
     
 
+def upgrade_card(case_id,card_id,level,n_frags,n_gold):
+    # cheat thông số truyền vào
+    card_ids = list(map(int,config_list_card.keys()))
+    if card_id not in card_ids:
+        WriteLogRunning(case_id, f"Card id error", "", False, False)
+        return
+    poco(HEADER_BTN_CHEAT).click()
+    poco("gold_input").click()
+    del_text()
+    text(str(n_gold))
+    poco("card_id_input").click()
+    del_text()
+    text(str(card_id))
+    poco("card_level_input").click()
+    del_text()
+    text(str(level))
+    poco("card_fragments_input").click()
+    del_text()
+    text(str(n_frags))
 
-# def upgrade_card
+    poco(CHEAT_POPUP_BTN_SENT).click()
+    if poco("resource_gold").offspring("value").get_text() != str(n_gold):
+        WriteLogRunning(case_id, f"Can't cheat gold", "", False, False)
+        return
+
+    poco(NAV_BAR_BTN_CARD).click()
+
+    list_battle_card = get_list_battle_card()
+    list_normal_card = get_list_nomal_card()
+
+    for item in list_battle_card:
+        if item[0].id == card_id:
+            find_item = item
+            break
+
+    for item in list_normal_card:
+        if item[0].id == card_id:
+            find_item = item
+            break
+    
+
+    # nếu không tìm được card
+    if "find_item" not in locals().keys():
+        WriteLogRunning(case_id, f"can't find card", "", False, False)
+        return
+    
+
+    # kiểm tra level sau khi cheat
+    if find_item[1].child("<no-name>").offspring("level").get_text() != "Lv." + str(level):
+        WriteLogRunning(case_id, f"error level card id {card_id}", "", False, False)
+        return
+    
+    
+    
+    levels = list(map(int,config_card.keys()))
+
+
+    if level >= max(levels):
+
+        # số thẻ nâng cấp phải để max
+        if find_item[1].child("card_progress_bar").offspring("text").get_text() != "MAX":
+            WriteLogRunning(case_id, f"error frag card id {card_id}", "", False, False)
+            return  
+
+        find_item[1].click()
+
+        if not poco("card_info_popup").exists():
+            WriteLogRunning(case_id, f"not show card info popup card id {card_id}", "", False, False)
+            return
+        # không thể ấn vào nút nâng cấp
+        poco("card_info_popup_btn_upgrade").click()
+        sleep(0.5)
+        if poco("card_info_popup").exists():
+            poco("close_button").click()
+            WriteLogRunning(case_id, f"upgrade card when card max level {card_id}", "", False, True)
+            return
+        else:
+            WriteLogRunning(case_id, f"error upgrade card when card max level {card_id}", "", False, False)
+            return
+    else:
+        # lấy config nâng cấp
+        config_upgrade = config_card[str(level+1)]
+        needed_frags = config_upgrade['fragments']
+        needed_gold = config_upgrade["gold"]
+        if find_item[1].child("card_progress_bar").offspring("text").get_text() != f"{n_frags}/{needed_frags}":
+            WriteLogRunning(case_id, f"error frag card id {card_id}", "", False, False)
+            return
+        find_item[1].click()
+        if not poco("card_info_popup").exists():
+            WriteLogRunning(case_id, f"not show card info popup card id {card_id}", "", False, False)
+            return
+        poco("card_info_popup_btn_upgrade").click()
+
+        # thiếu thẻ
+        if n_frags < needed_frags:
+            if not poco("notificationPanel").exists() or poco("notificationPanel").attr("visible") == False:
+                WriteLogRunning(case_id, f"not show notification Panel card id {card_id}", "", False, False)
+                return
+            else:
+                poco("close_button").click()
+                WriteLogRunning(case_id,f"Upgrade when not enough frags card id {card_id}","",False,True)
+                return
+        else:
+            # đủ thẻ thiếu vàng
+            if n_gold < needed_gold:
+                if not poco("notificationPanel").exists() or poco("notificationPanel").attr("visible") == False:
+                    WriteLogRunning(case_id, f"not show notification Panel card id {card_id}", "", False, False)
+                    return
+                else:
+                    poco("close_button").click()
+                    WriteLogRunning(case_id,f"Upgrade when not enough gold card id {card_id}","",False,True)
+                    return
+
+            else:
+                # đủ thẻ đủ vàng
+                sleep(0.5)
+                if poco("card_info_popup").exists():
+                    WriteLogRunning(case_id, f"not show card info popup card id {card_id}", "", False, False)
+                    return 
+                if find_item[1].child("<no-name>").offspring("level").get_text() != f"Lv.{level+1}":
+                    WriteLogRunning(case_id, f"upgrade error level {card_id}", "", False, False)
+                    return 
+                if level + 1 >= max(levels):
+                    if find_item[1].child("card_progress_bar").offspring("text").get_text() != "MAX":
+                        WriteLogRunning(case_id, f"error frag card id {card_id}", "", False, False)
+                        return
+                else:
+                    remain_frag = n_frags-needed_frags
+                    next_needed_frag = config_card[str(level+2)]["fragments"]
+                    if find_item[1].child("card_progress_bar").offspring("text").get_text() != f"{remain_frag}/{next_needed_frag}":
+                        WriteLogRunning(case_id, f"error frag card id {card_id}", "", False, False)
+                        return
+                
+                WriteLogRunning(case_id,f"Upgrade succeed {card_id}","",False,True)
+                return
+                
+    
+
+                
+                    
+
+                
+
+               
+
+
+
+             
+    
+
+    
+        
+
+
+   
+    
+
+
+
 
         
 
